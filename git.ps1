@@ -14,6 +14,10 @@ function gitc {
   & git commit $args
 }
 
+function gits {
+  git status
+}
+
 # git reset hard 
 function gitr {
   git reset --hard origin/main
