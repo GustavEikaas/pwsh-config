@@ -1,25 +1,25 @@
 
 # git pull alias
-function gitp {
+function ggp {
   git pull 
 }
 
 # git add alias
-function gita {
+function gga {
   & git add $args
 }
 
 # git commit alias
-function gitc {
+function ggc {
   & git commit $args
 }
 
-function gits {
+function ggs {
   git status
 }
 
 # git reset hard 
-function gitr {
+function ggr {
   git reset --hard origin/main
   git clean -f -d
 }
