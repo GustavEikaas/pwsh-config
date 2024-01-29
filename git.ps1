@@ -39,6 +39,15 @@ function ggpush {
     git push $args
 }
 
+function ggac {
+   param(
+        $Text
+    )
+  git add .
+  git commit -m $Text
+}
+
+
 function ggh {
     Write-Host "Available Git Helper Commands:"
     Write-Host "  ggp     - Git Pull: Pull changes from the remote repository."
