@@ -1,7 +1,7 @@
 
 # git pull alias
 function ggp {
-  git pull 
+  git pull $args 
 }
 
 # git add alias
