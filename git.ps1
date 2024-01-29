@@ -16,7 +16,7 @@ function ggc {
 
 # git status alias
 function ggs {
-  git status
+  git status $args
 }
 
 # git reset hard 
