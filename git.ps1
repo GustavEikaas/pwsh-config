@@ -25,7 +25,6 @@ function ggr {
   git clean -f -d
 }
 
-
 function ggpush {
     $currentBranch = git rev-parse --abbrev-ref HEAD
 
