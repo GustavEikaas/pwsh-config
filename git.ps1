@@ -37,8 +37,6 @@ function ggrmain {
 
 function ggpush {
     git push $args
-
-    Write-Host "Files changed: $filesChangedBefore, Commits pushed: $commitsAheadBefore"
 }
 
 function ggh {
