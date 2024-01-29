@@ -25,3 +25,12 @@ function ggr {
   git clean -f -d
 }
 
+
+function ggpush {
+  $filesChangedBefore = git diff --name-only origin/main..HEAD | Measure-Object | Select-Object -ExpandProperty Count
+  $commitsAheadBefore = git rev-list --count HEAD ^origin/main
+
+  git push $args
+
+  Write-Host "Files changed: $filesChangedBefore, Commits ahead: $commitsAheadBefore"
+}
