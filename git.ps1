@@ -27,10 +27,12 @@ function ggr {
 
 
 function ggpush {
-  $filesChangedBefore = git diff --name-only origin/main..HEAD | Measure-Object | Select-Object -ExpandProperty Count
-  $commitsAheadBefore = git rev-list --count HEAD ^origin/main
+    $currentBranch = git rev-parse --abbrev-ref HEAD
 
-  git push $args
+    $filesChangedBefore = git diff --name-only origin/$currentBranch..HEAD | Measure-Object | Select-Object -ExpandProperty Count
+    $commitsAheadBefore = git rev-list --count HEAD ^origin/$currentBranch
 
-  Write-Host "Files changed: $filesChangedBefore, Commits ahead: $commitsAheadBefore"
-}
+    git push $args
+
+    Write-Host "Files changed: $filesChangedBefore, Commits pushed: $commitsAheadBefore"
+} 
