@@ -14,6 +14,7 @@ function ggc {
   & git commit $args
 }
 
+# git status alias
 function ggs {
   git status
 }
