@@ -19,6 +19,10 @@ function ggs {
   git status $args
 }
 
+function ggch {
+  git checkout $args
+}
+
 # git reset hard 
 function ggr {
   git reset --hard origin/main
