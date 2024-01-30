@@ -11,8 +11,11 @@ foreach ($file in $Files) {
 } 
 
 
-Get-FunctionsInFiles -Files $Files
 
+function welcome {
+  Write-Host "Welcome to pwsh-alias"
+  Write-Host "Type pwsh-alias show <name> to show available commands"
+}
 
 function pwsh-alias {
     param (
@@ -47,6 +50,7 @@ function pwsh-alias {
         }
     }
     else {
+      welcome
       Get-FunctionsInFiles -Files $Files
     }
 }
