@@ -12,6 +12,8 @@ function ghprc{
 #>
 function ghprm{
   gh pr merge --squash 
+  ghprv
+  ggrm
 }
 
 <#
