@@ -15,7 +15,8 @@ function ghprc{
 function ghprm{
   gh pr merge --squash 
   ghprv
-  ggrm
+  git checkout main
+  git pull --quiet
 }
 
 <#
