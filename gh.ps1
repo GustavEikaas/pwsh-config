@@ -9,6 +9,8 @@ function ghprc{
 <#
 .SYNOPSIS
     gh pr merge --squash
+    gh pr view
+    ggrm
 #>
 function ghprm{
   gh pr merge --squash 
