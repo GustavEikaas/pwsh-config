@@ -14,11 +14,12 @@ function ghprc{
     ggrm
 #>
 function ghprm {
-  gh pr merge --squash 
+  gh pr merge --squash -d 
   if(-not $?){
     $markReady = ask -Question "Pull Request still draft, mark as ready and merge? (Y to merge, N to cancel)"
     if($markReady){
       gh pr ready
+      Start-Sleep -Milliseconds 500
     }else{
       Write-Host "Aborting..."
       return
