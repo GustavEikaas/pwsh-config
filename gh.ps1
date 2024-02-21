@@ -10,17 +10,17 @@ function ghprc{
 
 <#
 .SYNOPSIS
-    gh pr create --draft --fill
+    gh pr merge --squash
 #>
-function ghprc{
+function ghprm{
   gh pr merge --squash 
 }
 
 <#
 .SYNOPSIS
-    gh pr create --draft --fill
+    gh pr checkout <branch|number>
 #>
-function ghprc{
+function ghprch{
   gh pr checkout $args     
 }
 
