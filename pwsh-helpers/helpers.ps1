@@ -44,3 +44,29 @@ function Get-FunctionsInFiles {
     }
 }
 
+function ask{
+    param (
+        [string]$Question
+    )
+    # Display the question
+    Write-Host $Question -ForegroundColor Cyan
+
+    # Prompt for user input
+    $response = Read-Host "(Y/N)"
+
+    # Convert the response to uppercase for case-insensitive comparison
+    $response = $response.ToUpper()
+
+    # Check if the response is valid
+    if ($response -eq 'Y' -or $response -eq 'YES') {
+        return $true
+    }
+    elseif ($response -eq 'N' -or $response -eq 'NO') {
+        return $false
+    }
+    else {
+        Write-Host "Invalid response. Please enter Y or N." -ForegroundColor Red
+        # Recursively call the function to prompt again
+        return (ask -Question $Question)
+    }
+}
