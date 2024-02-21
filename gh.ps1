@@ -19,14 +19,13 @@ function ghprm {
     $markReady = ask -Question "Pull Request still draft, mark as ready and merge? (Y to merge, N to cancel)"
     if($markReady){
       gh pr ready
-      Start-Sleep -Seconds 5
     }else{
       Write-Host "Aborting..."
       return
     }
   }
 
-  ghprm
+  gh pr merge --squash -d
   ghprv
   ggrm
 }
