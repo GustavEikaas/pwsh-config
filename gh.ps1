@@ -24,7 +24,6 @@ function ghprm {
       return
     }
   }
-
   gh pr merge --squash -d
   ghprv
   ggrm
