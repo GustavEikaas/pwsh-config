@@ -46,13 +46,14 @@ function ggch {
 function ggr {
   git reset --hard
   git clean -f -d
+  ggp
 }
 
 <#
 .SYNOPSIS
     ggr && ggch main && ggp
 #>
-function ggrmain {
+function ggrm {
   ggr
   ggch main
   ggp
@@ -74,6 +75,7 @@ function ggac {
    param(
         $Text
     )
+  ggs
   git add .
   git commit -m $Text
 }
