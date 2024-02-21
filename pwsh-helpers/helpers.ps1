@@ -61,12 +61,5 @@ function ask{
     if ($response -eq 'Y' -or $response -eq 'YES') {
         return $true
     }
-    elseif ($response -eq 'N' -or $response -eq 'NO') {
-        return $false
-    }
-    else {
-        Write-Host "Invalid response. Please enter Y or N." -ForegroundColor Red
-        # Recursively call the function to prompt again
-        return (ask -Question $Question)
-    }
+    return $false 
 }
