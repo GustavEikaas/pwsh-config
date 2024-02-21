@@ -14,8 +14,8 @@ function ghprc{
     ggrm
 #>
 function ghprm {
-  $mergeOutput = gh pr merge --squash 
-  if($mergeOutput -match "GraphQL: Pull Request is still a draft"){
+  gh pr merge --squash 
+  if(-not $?){
     $markReady = ask -Question "Pull Request still draft, mark as ready and merge? (Y to merge, N to cancel)"
     if($markReady){
       gh pr ready
