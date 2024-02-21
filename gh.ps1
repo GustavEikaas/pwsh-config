@@ -4,6 +4,7 @@
 #>
 function ghprc{
   gh pr create --draft --fill
+  gh pr view
 }
 
 <#
