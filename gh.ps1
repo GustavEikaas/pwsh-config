@@ -26,8 +26,16 @@ function ghprm {
   ghprv
   ggrm
 }
-
+<#
+.SYNOPSIS
+    git push && create draft pr if not remote
+#>
 function ghpush {
+   $currentBranch = git rev-parse --abbrev-ref HEAD
+    if ($currentBranch -eq "main") {
+        Write-Host "Denying push, you are on main branch🛑"
+        return
+    }
   git push
   gh pr view
   if(-not $?){
