@@ -64,7 +64,12 @@ function ggrm {
 #>
 
 function ggpush {
-  if(main-check){
+ [CmdletBinding()]
+    param (
+        [switch]$F
+    )
+  if(main-check -and -Not $F){
+    Write-Host "On main branch, use -F flag to bypass"
     return
   }
   git push $args
