@@ -68,7 +68,7 @@ function ggpush {
     param (
         [switch]$F
     )
-  if(main-check -and -Not $F){
+  if(main-check -and (-not $F)){
     Write-Host "On main branch, use -F flag to bypass"
     return
   }
