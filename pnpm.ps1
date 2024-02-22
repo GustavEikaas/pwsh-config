@@ -2,8 +2,7 @@
 .SYNOPSIS
     pnpm install <args>
 #>
-
-function pi {
+function ppi{
   pnpm install $args
 }
 
@@ -11,7 +10,16 @@ function pi {
 .SYNOPSIS
     pnpm build $args
 #>
-
-function pb {
+function ppb{
   pnpm build $args
 }
+
+<#
+.SYNOPSIS
+    pnpm start $args
+#>
+function pps{
+  pnpm start $args
+}
+
+
