@@ -1,4 +1,4 @@
-
+. "$PSScriptRoot/git-helpers/helpers.ps1"
 <#
 .SYNOPSIS
     git pull <args>
