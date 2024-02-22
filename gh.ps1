@@ -1,3 +1,4 @@
+. "$PSScriptRoot/git-helpers/helpers.ps1"
 <#
 .SYNOPSIS
     gh pr create --draft --fill
@@ -31,11 +32,13 @@ function ghprm {
     git push && create draft pr if not remote
 #>
 function ghpush {
-   $currentBranch = git rev-parse --abbrev-ref HEAD
-    if ($currentBranch -eq "main") {
-        Write-Host "Denying push, you are on main branch🛑"
-        return
-    }
+  [CmdletBinding()]
+  param ([switch]$F)
+  if((main-check) -and (-not $F)){
+    Write-Host "On main branch, use -F flag to bypass"
+    return
+  }
+
   git push
   gh pr view
   if(-not $?){
