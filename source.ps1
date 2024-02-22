@@ -5,6 +5,7 @@ $Files = @(
     [PSCustomObject]@{ FileName = "$PSScriptRoot\pnpm.ps1"; DisplayName = "pnpm" }
     [PSCustomObject]@{ FileName = "$PSScriptRoot\snippet.ps1"; DisplayName = "snippet" }
     [PSCustomObject]@{ FileName = "$PSScriptRoot\gh.ps1"; DisplayName = "Github" }
+    [PSCustomObject]@{ FileName = "$PSScriptRoot\dotnet.ps1"; DisplayName = ".Net" }
 )
 
 
