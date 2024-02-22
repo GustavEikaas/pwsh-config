@@ -2,16 +2,14 @@
 .SYNOPSIS
     gh pr create --draft --fill
 #>
-function ghprc{
+function ghprc {
   gh pr create --draft --fill
   gh pr view
 }
 
 <#
 .SYNOPSIS
-    gh pr merge --squash
-    gh pr view
-    ggrm
+    gh pr merge --squash && gh pr view ggrm
 #>
 function ghprm {
   gh pr merge --squash -d 
@@ -29,11 +27,22 @@ function ghprm {
   ggrm
 }
 
+function ghpush {
+  git push
+  gh pr view
+  if(-not $?){
+    $createPr = ask -Question "No PR linked to branch, do you want to create a draft PR?"
+    if($createPr){
+      ghprc
+    } 
+  }
+}
+
 <#
 .SYNOPSIS
     gh pr checkout <branch|number>
 #>
-function ghprch{
+function ghprch {
   gh pr checkout $args     
 }
 
@@ -41,7 +50,7 @@ function ghprch{
 .SYNOPSIS
     gh pr diff
 #>
-function ghprd{
+function ghprd {
   gh pr diff $args     
 }
 
