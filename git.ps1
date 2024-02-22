@@ -64,6 +64,11 @@ function ggrm {
 #>
 
 function ggpush {
+   $currentBranch = git rev-parse --abbrev-ref HEAD
+    if ($currentBranch -eq "main") {
+        Write-Host "Denying push, you are on main branch🛑"
+        return
+    }
     git push $args
 }
 
