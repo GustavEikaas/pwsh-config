@@ -64,11 +64,8 @@ function ggrm {
 #>
 
 function ggpush {
- [CmdletBinding()]
-    param (
-        [switch]$F
-    )
-
+  [CmdletBinding()]
+  param ([switch]$F)
   if((main-check) -and (-not $F)){
     Write-Host "On main branch, use -F flag to bypass"
     return
@@ -81,9 +78,15 @@ function ggpush {
     git add . && git commit -m <args>
 #>
 function ggac {
+  [CmdletBinding()]
    param(
         $Text
+        [switch]$F
     )
+  if((main-check) -and (-not $F)){
+    Write-Host "On main branch, use -F flag to bypass"
+    return
+  }
   ggs
   git add .
   git commit -m $Text
