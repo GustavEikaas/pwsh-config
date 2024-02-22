@@ -80,7 +80,7 @@ function ggpush {
 function ggac {
   [CmdletBinding()]
    param(
-        $Text
+        $Text,
         [switch]$F
     )
   if((main-check) -and (-not $F)){
