@@ -2,6 +2,6 @@
 .SYNOPSIS
     nvim <args>
 #>
-function nv {
+function nnv {
   nvim $args 
 }
