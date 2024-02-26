@@ -107,7 +107,7 @@ function ggac
 .SYNOPSIS
     git restore $args
 #>
-function ggr
+function ggrf
 {
   git restore $args
 }
