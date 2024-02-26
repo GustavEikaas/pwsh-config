@@ -13,8 +13,6 @@ foreach ($file in $Files) {
   . $file.FileName
 } 
 
-
-
 function welcome {
   Write-Host "Welcome to pwsh-alias"
   Write-Host "Type pwsh-alias show <name> to show available commands"
@@ -49,7 +47,7 @@ function pwsh-alias {
             $scriptPath = $file.FileName
 
             Write-Host "`n[$displayName]"
-            $functionNames = Get-DeclaredFunctions -ScriptPath $scriptPath
+            Get-DeclaredFunctions -ScriptPath $scriptPath
         }
     }
     else {

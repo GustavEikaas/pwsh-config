@@ -3,7 +3,8 @@
 .SYNOPSIS
     git pull <args>
 #>
-function ggp {
+function ggp
+{
   git pull $args 
 }
 
@@ -11,7 +12,8 @@ function ggp {
 .SYNOPSIS
     git add <args>
 #>
-function gga {
+function gga
+{
   & git add $args
 }
 
@@ -19,7 +21,8 @@ function gga {
 .SYNOPSIS
     git commit <args>
 #>
-function ggc {
+function ggc
+{
   & git commit $args
 }
 
@@ -27,7 +30,8 @@ function ggc {
 .SYNOPSIS
     git status <args>
 #>
-function ggs {
+function ggs
+{
   git status $args
 }
 
@@ -35,7 +39,8 @@ function ggs {
 .SYNOPSIS
     git checkout <args>
 #>
-function ggch {
+function ggch
+{
   git checkout $args
 }
 
@@ -43,7 +48,8 @@ function ggch {
 .SYNOPSIS
     git reset --hard && git clean -fd
 #>
-function ggr {
+function ggr
+{
   git reset --hard
   git clean -f -d
   ggp
@@ -53,7 +59,8 @@ function ggr {
 .SYNOPSIS
     ggr && ggch main && ggp
 #>
-function ggrm {
+function ggrm
+{
   ggr
   ggch main
   ggp
@@ -63,10 +70,12 @@ function ggrm {
     git push <args>
 #>
 
-function ggpush {
+function ggpush
+{
   [CmdletBinding()]
   param ([switch]$F)
-  if((main-check) -and (-not $F)){
+  if((main-check) -and (-not $F))
+  {
     Write-Host "On main branch, use -F flag to bypass"
     return
   }
@@ -77,18 +86,29 @@ function ggpush {
 .SYNOPSIS
     git add . && git commit -m <args>
 #>
-function ggac {
+function ggac
+{
   [CmdletBinding()]
-   param(
-        $Text,
-        [switch]$F
-    )
-  if((main-check) -and (-not $F)){
+  param(
+    $Text,
+    [switch]$F
+  )
+  if((main-check) -and (-not $F))
+  {
     Write-Host "On main branch, use -F flag to bypass"
     return
   }
   ggs
   git add .
   git commit -m $Text
+}
+
+<#
+.SYNOPSIS
+    git restore $args
+#>
+function ggr
+{
+  git restore $args
 }
 
