@@ -57,6 +57,20 @@ function ggr
 
 <#
 .SYNOPSIS
+    git restore --source=origin/main $args
+#>
+function ggrf
+{
+  param(
+    [Parameter(Mandatory = $true, Position = 0)]
+    [string]$filePath,
+    [string]$source = "origin/main"
+  )
+
+  git restore $filePath --source=$source
+}
+<#
+.SYNOPSIS
     ggr && ggch main && ggp
 #>
 function ggrm
@@ -103,12 +117,4 @@ function ggac
   git commit -m $Text
 }
 
-<#
-.SYNOPSIS
-    git restore $args
-#>
-function ggrf
-{
-  git restore $args
-}
 
