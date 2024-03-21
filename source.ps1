@@ -55,3 +55,6 @@ function pwsh-alias {
       Get-FunctionsInFiles -Files $Files
     }
 }
+. "$PSScriptRoot/completion/spt.ps1"
+. "$PSScriptRoot/completion/gh.ps1"
+Import-Module posh-git
