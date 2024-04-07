@@ -103,15 +103,7 @@ function ggpush
 function ggac
 {
   [CmdletBinding()]
-  param(
-    $Text,
-    [switch]$F
-  )
-  if((main-check) -and (-not $F))
-  {
-    Write-Host "On main branch, use -F flag to bypass"
-    return
-  }
+  param($Text)
   ggs
   git add .
   git commit -m $Text
