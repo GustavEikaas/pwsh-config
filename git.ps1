@@ -41,7 +41,30 @@ function ggs
 #>
 function ggch
 {
-  git checkout $args
+  if ($args.Count -ge 1)
+  {
+    git checkout $args
+
+  } else
+  {
+    git fetch --all
+    $branches = git branch -r | ForEach-Object { $_ -replace "origin/", "" } | Where-Object { $_ -notlike "*HEAD*" }
+    Write-Host "Select a remote branch:"
+    for ($i = 0; $i -lt $branches.Count; $i++)
+    {
+      Write-Host "$($i+1). $($branches[$i])"
+    }
+    $selection = Read-Host "Enter the number of the branch you want to select"
+    if ([int]$selection -ge 1 -and [int]$selection -le $branches.Count)
+    {
+      $selectedBranch = $branches[$selection - 1].Trim()
+      git checkout $selectedBranch
+    } else
+    {
+      Write-Host "Invalid selection. Please enter a valid number."
+    }
+
+  }
 }
 
 <#
@@ -108,5 +131,4 @@ function ggac
   git add .
   git commit -m $Text
 }
-
 
