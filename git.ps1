@@ -132,3 +132,8 @@ function ggac
   git commit -m $Text
 }
 
+function ggd
+{
+  git diff --name-only --relative --diff-filter=d | ForEach-Object { bat --diff $_ }
+}
+
