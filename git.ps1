@@ -134,6 +134,6 @@ function ggac
 
 function ggd
 {
-  git diff --name-only --relative --diff-filter=d | ForEach-Object { bat --diff $_ }
+  git diff
 }
 
