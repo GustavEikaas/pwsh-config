@@ -73,3 +73,12 @@ function ghprv{
   gh pr view $args     
 }
 
+<#
+.SYNOPSIS
+    gh pr view
+#>
+function ghrv{
+  gh repo view --web
+}
+
+
