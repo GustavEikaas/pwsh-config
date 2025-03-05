@@ -85,7 +85,13 @@ function ggr
 {
   git reset --hard
   git clean -f -d
-  ggp
+  $remoteTrackingBranch = git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>$null
+
+  if ($remoteTrackingBranch) {
+      ggp
+  } else {
+      Write-Host "No remote tracking branch is set. Skipping pull."
+  }
 }
 
 <#
@@ -109,7 +115,19 @@ function ggrf
 function ggrm
 {
   ggr
-  ggch main
+  $mergedBranches = git branch --merged | ForEach-Object { $_.Trim() }
+  $base = $mergedBranches | Where-Object { $_ -match '^(main|master|dev|develop|test)$' } | Select-Object -First 1
+
+  if (-not $base) {
+    Write-Host "Failed to find common ancestor [main,master,dev,develop,test]"
+    return
+  }
+  $currentBranch = git rev-parse --abbrev-ref HEAD
+
+  if ($base -ne $currentBranch) {
+    ggch $base
+  } 
+
   ggp
 }
 <#
@@ -127,6 +145,7 @@ function ggpush
     return
   }
   git push $args
+  git log -n 5 --oneline
 }
 
 <#

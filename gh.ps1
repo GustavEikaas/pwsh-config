@@ -41,12 +41,13 @@ function ghpush {
 
   git push
   gh pr view
-  if(-not $?){
+  if ((-not (main-check)) -and (-not $?)) {
     $createPr = ask -Question "No PR linked to branch, do you want to create a draft PR?"
     if($createPr){
       ghprc
     } 
   }
+  git log -n 5 --oneline
 }
 
 <#
