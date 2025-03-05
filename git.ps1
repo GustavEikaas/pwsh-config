@@ -10,6 +10,16 @@ function ggp
 
 <#
 .SYNOPSIS
+    git reset --soft HEAD~
+#>
+function ggu
+{
+  git reset --soft HEAD~
+  git restore --staged .
+}
+
+<#
+.SYNOPSIS
     git add <args>
 #>
 function gga
