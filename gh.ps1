@@ -34,19 +34,27 @@ function ghprm {
 function ghpush {
   [CmdletBinding()]
   param ([switch]$F)
+
   if((main-check) -and (-not $F)){
     Write-Host "On main branch, use -F flag to bypass"
     return
   }
-
   git push
+
+  if(main-check){
+    git log -n 5 --oneline
+    return
+  }
+
   gh pr view
-  if ((-not (main-check)) -and (-not $?)) {
+
+  if (-not $?) {
     $createPr = ask -Question "No PR linked to branch, do you want to create a draft PR?"
     if($createPr){
       ghprc
     } 
   }
+
   git log -n 5 --oneline
 }
 
