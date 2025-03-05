@@ -42,7 +42,7 @@ function ggc
 #>
 function ggs
 {
-  git status $args
+  git status --porcelain -sb $args
 }
 
 <#
