@@ -117,8 +117,9 @@ function ggrm
   ggr
   $mergedBranches = git branch --merged | ForEach-Object { $_.Trim() }
   $base = $mergedBranches | Where-Object { $_ -match '^(main|master|dev|develop|test)$' } | Select-Object -First 1
+  $currentBranch = git rev-parse --abbrev-ref HEAD
 
-  if (-not $base) {
+  if (-not $base -and $currentBranch -notmatch '^(main|master|dev|develop|test)$') {
     Write-Host "Failed to find common ancestor [main,master,dev,develop,test]"
     return
   }
