@@ -90,4 +90,27 @@ function ghrv{
   gh repo view --web
 }
 
+function ghprac {
+  $branch = git rev-parse --abbrev-ref HEAD
+  if ($branch -match '^(main|master|dev)$') {
+      Write-Host "You are on a protected branch ($branch). Switch to a feature branch before proceeding."
+      return
+  }
+
+  git add .
+  git commit -m $args
+  if (-not $?) {
+      Write-Host "Commit failed. Aborting..."
+      return
+  }
+
+  git push
+  if (-not $?) {
+      Write-Host "Push failed. Aborting..."
+      return
+  }
+
+  gh pr create --fill
+  gh pr view
+}
 
