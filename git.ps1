@@ -10,6 +10,15 @@ function ggp
 
 <#
 .SYNOPSIS
+    git pull origin main
+#>
+function ggpm
+{
+  git pull origin main
+}
+
+<#
+.SYNOPSIS
     git reset --soft HEAD~
 #>
 function ggu
